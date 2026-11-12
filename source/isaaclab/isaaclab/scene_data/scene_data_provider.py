@@ -109,6 +109,16 @@ class SceneDataProvider:
         fabric = output_format is SceneDataFormat.FabricMatrix44
         source = self.backend.get_transforms(output_format)
         source_format = source._cls
+        # Bound Fabric destinations use body indices from transform_paths. Native
+        # Fabric selections need not share that ordering, so remap the pose view.
+        if (
+            fabric
+            and source_format is SceneDataFormat.FabricMatrix44
+            and (mapping is not None or scales is not None)
+            and SceneDataFormat.Transform in self.backend.native_transform_formats
+        ):
+            source = self.backend.get_transforms(SceneDataFormat.Transform)
+            source_format = source._cls
         timestamp = self.backend.transforms_timestamp
         native_count = next(
             (len(array) for name in source_format.vars if (array := getattr(source, name)) is not None), 0

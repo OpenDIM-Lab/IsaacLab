@@ -318,6 +318,9 @@ class KitVisualizer(BaseVisualizer):
         # Create the render product and annotator before the app update so the first
         # captured frame contains real rendered output, not empty/blank data.
         if self._rgb_annotator is None:
+            # Depth-only sensors can disable color globally during RTX initialization.
+            # Viewport capture needs color even when the simulation has no GUI.
+            get_settings_manager().set("/rtx/sdg/force/disableColorRender", False)
             self._rgb_render_product = rep.create.render_product(camera_path, (w, h))
             self._apply_render_product_background(SimulationContext.instance().stage, self._rgb_render_product.path)
             self._rgb_annotator = rep.AnnotatorRegistry.get_annotator("rgb", device="cpu")

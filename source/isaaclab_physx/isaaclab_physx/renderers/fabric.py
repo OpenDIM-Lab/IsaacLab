@@ -57,11 +57,8 @@ class FabricBackend:
         self._geometry_bindings = None
 
     def bind_transforms(self, provider: SceneDataProvider) -> None:
-        """Bind the initialized simulation's rigid destinations once; native Fabric needs no conversion binding."""
+        """Bind body-local matrices so visual descendants inherit current physics poses."""
         if self.transforms is not None:
-            return
-        if SceneDataFormat.FabricMatrix44 in provider.backend.native_transform_formats:
-            self.transforms = SceneDataFormat.FabricMatrix44()
             return
 
         stage = self.stage

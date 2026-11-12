@@ -4,6 +4,17 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
 __all__ = [
+    "RslRlTactileDistillationAlgorithmCfg",
+    "RslRlActorCriticExtrinsicsCfg",
+    "RslRlActorCriticCNNCfg",
+    "RslRlOnPolicyCoDesignRunnerCfg",
+    "RslRlDistillationStudentTeacherCNNCfg",
+    "RslRlDistillationStudentTeacherCNNRNNCfg",
+    "RslRlExtrinsicsDistillationStudentTeacherCfg",
+    "RslRlExtrinsicsMultiModalDistillationStudentTeacherCfg",
+    "RslRlExtrinsicsDistillationAlgorithmCfg",
+    "RslRlExtrinsicsDistillationRunnerCfg",
+    "RslRlExtrinsicsMultiModalDistillationRunnerCfg",
     "RslRlDistillationAlgorithmCfg",
     "RslRlDistillationRunnerCfg",
     "RslRlDistillationStudentTeacherCfg",
@@ -45,5 +56,18 @@ from .rl_cfg import (
 )
 from .rnd_cfg import RslRlRndCfg
 from .symmetry_cfg import RslRlSymmetryCfg
+from .tactile_cfg import (
+    RslRlActorCriticCNNCfg,
+    RslRlActorCriticExtrinsicsCfg,
+    RslRlDistillationStudentTeacherCNNCfg,
+    RslRlDistillationStudentTeacherCNNRNNCfg,
+    RslRlExtrinsicsDistillationAlgorithmCfg,
+    RslRlExtrinsicsDistillationRunnerCfg,
+    RslRlExtrinsicsDistillationStudentTeacherCfg,
+    RslRlExtrinsicsMultiModalDistillationRunnerCfg,
+    RslRlExtrinsicsMultiModalDistillationStudentTeacherCfg,
+    RslRlOnPolicyCoDesignRunnerCfg,
+    RslRlTactileDistillationAlgorithmCfg,
+)
 from .utils import check_rsl_rl_version, create_rsl_rl_runner, handle_deprecated_rsl_rl_cfg
 from .vecenv_wrapper import RslRlVecEnvWrapper
